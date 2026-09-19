@@ -148,6 +148,7 @@ def pack_5bit_symbols_native(symbols: list[int]) -> bytes:
     if bits:
         out.append((acc << (8 - bits)) & 0xFF)
     return bytes(out)
+
 def split_5bit_symbols_native(data: bytes) -> list[int]:
     """Port of APK SplitMessageIntoSymbols<unsigned char> for m=5."""
     m = GF_M
@@ -666,6 +667,7 @@ def decode_legacy_tag(path: str | Path) -> dict:
     r['cells'] = cells
     r['legacy_tag_hex'] = cells_to_legacy_tag(cells)
     return r
+
 def parse_cells(text: str) -> list[int]:
     vals = [int(x) for x in re.findall(r'\d+', text)]
     return vals
